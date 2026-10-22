@@ -1,4 +1,4 @@
-package edu.plotter;
+package edu.plotter.modern;
 
 import java.awt.*;
 
