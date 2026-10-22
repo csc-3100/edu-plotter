@@ -1,9 +1,24 @@
 package edu.plotter;
-import java.awt.Graphics;
-import java.util.Objects;
-/** Base drawing decorator, wrapping a required component. */
+
+import java.awt.*;
+
+/**
+ * Base class for plot decorations that delegate drawing to another Component.
+ *
+ * <p>The add method sets the wrapped component; subclasses add drawing behavior and then call super.draw.</p>
+ */
 public abstract class Decorator implements Component {
-    protected final Component component;
-    protected Decorator(Component component) { this.component = Objects.requireNonNull(component); }
-    @Override public void draw(Graphics graphics) { component.draw(graphics); }
+
+    protected Component component;
+
+    /** Sets the component wrapped by this decorator. */
+    public void add(Component d) {
+        component = d;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        component.draw(g);
+    }
+
 }

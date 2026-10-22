@@ -11,7 +11,7 @@ classDiagram
     class Decorator {
       <<abstract>>
       #component: Component
-      +Decorator(Component)
+      +add(Component)
       +draw(Graphics)
     }
     class Plot
@@ -55,4 +55,4 @@ sequenceDiagram
     Component->>Repository: getValues()
 ```
 
-The three panels register independently with the same repository. Decorators receive their wrapped component through constructors. The drawing chains differ: `BarGray → SquareBlue → Plot`, `SquareBlue → Plot`, and `Plot`.
+The three panels register independently with the same repository. The drawing chains differ: `BarGray → SquareBlue → Plot`, `SquareBlue → Plot`, and `Plot`.

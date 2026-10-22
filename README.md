@@ -29,6 +29,6 @@ See [the architecture diagram](docs/architecture.md) for relationships and the u
 
 ## Teaching notes and limitations
 
-This is a **teaching example**, not a production-ready charting library. The code intentionally preserves the original behavior and pattern implementation for discussion. Possible refactorings include using panel dimensions instead of hard-coded coordinates, adding more tests and refining the plotting coordinate system, reviewing constructor-injected decorators, and discussing Swing threading and shared mutable state.
+This is a **teaching example**, not a production-ready charting library. The code intentionally preserves the original behavior and pattern implementation for discussion. Each class includes introductory JavaDoc describing its responsibility and role. Possible refactorings include using panel dimensions instead of hard-coded coordinates, preventing external mutation of stored values, using constructor injection for decorators, and improving singleton thread safety.
 
 The earlier unrelated `OLD/` examples are removed from the current branch but remain accessible in Git history.

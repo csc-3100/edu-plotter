@@ -1,29 +1,37 @@
 package edu.plotter;
+
 import java.awt.*;
-import java.util.List;
-/** Draws a line plot and the average value. */
-public final class Plot implements Component {
-    static int xFor(int index, int width) { return 6 + index * Math.max(1, width - 12) / Repository.MAX_VALUES; }
-    static int yFor(int value, int height) {
-        return Math.max(0, height - 1 - value * Math.max(1, height - 12) / Repository.MAX_VALUE);
-    }
-    @Override public void draw(Graphics graphics) {
-        Rectangle bounds = graphics.getClipBounds();
-        int width = bounds == null ? 501 : Math.max(1, bounds.width);
-        int height = bounds == null ? 190 : Math.max(1, bounds.height);
-        if (graphics instanceof Graphics2D g2)
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        List<Integer> values = Repository.getInstance().getValues();
-        graphics.setColor(Color.BLUE);
-        for (int i = 0; i < values.size(); i++) {
-            int x = xFor(i, width), y = yFor(values.get(i), height);
-            if (i == 0) graphics.fillRect(x, y, 1, 1);
-            else graphics.drawLine(xFor(i - 1, width), yFor(values.get(i - 1), height), x, y);
+import java.util.LinkedList;
+
+/**
+ * Draws the underlying line plot and a horizontal average indicator.
+ *
+ * <p>This is the concrete Component in the Decorator example.</p>
+ */
+public class Plot implements Component {
+
+    public final int MAX_NUMBER_OF_VALUES = 20;
+
+    @Override
+    public void draw(Graphics g) {
+        Graphics2D graphics2D = (Graphics2D)g;
+        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setColor(Color.BLUE);
+        for (int index = 0; index < Repository.getInstance().getSize(); index++){
+            if (index == 0){
+                g.fillRect(501/MAX_NUMBER_OF_VALUES*index+6, Repository.getInstance().getValue(index), 1, 1);
+            }else{
+                g.drawLine(501/MAX_NUMBER_OF_VALUES*(index-1)+6, Repository.getInstance().getValue(index-1),
+                        501/MAX_NUMBER_OF_VALUES*index+6, Repository.getInstance().getValue(index));
+            }
         }
-        if (!values.isEmpty()) {
-            int mean = (int) Math.round(values.stream().mapToInt(Integer::intValue).average().orElse(0));
-            graphics.setColor(Color.RED);
-            graphics.drawLine(0, yFor(mean, height), width, yFor(mean, height));
+        g.setColor(Color.RED);
+        if(!Repository.getInstance().getValues().isEmpty()) {
+            int sum = 0;
+            for (int index = 0; index < Repository.getInstance().getValues().size(); index++) {
+                sum += (int) Repository.getInstance().getValues().get(index);
+            }
+            g.drawLine(0, (sum / Repository.getInstance().getValues().size()), 501, (sum / Repository.getInstance().getValues().size()));
         }
     }
 }
