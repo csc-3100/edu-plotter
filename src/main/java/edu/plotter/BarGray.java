@@ -1,3 +1,5 @@
+package edu.plotter;
+
 import java.awt.*;
 
 public class BarGray extends Decorator {

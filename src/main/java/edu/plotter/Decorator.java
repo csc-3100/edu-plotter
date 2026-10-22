@@ -1,3 +1,5 @@
+package edu.plotter;
+
 import java.awt.*;
 
 public abstract class Decorator implements Component {
