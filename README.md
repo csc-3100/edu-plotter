@@ -32,7 +32,3 @@ See [the architecture diagram](docs/architecture.md) for relationships and the u
 This is a **teaching example**, not a production-ready charting library. The code intentionally preserves the original behavior and pattern implementation for discussion. Possible refactorings include using panel dimensions instead of hard-coded coordinates, preventing external mutation of stored values, using constructor injection for decorators, and improving singleton thread safety.
 
 The earlier unrelated `OLD/` examples are removed from the current branch but remain accessible in Git history.
-
-## License
-
-No license has been specified. Do not assume the source is licensed for reuse outside this repository.
