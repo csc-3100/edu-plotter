@@ -1,4 +1,14 @@
-# Plotter — Design Patterns in Java
+# Plotter — Classic and Modern
+
+Two independent Java Swing applications illustrate the Decorator and Observer patterns:
+
+- **Classic** — original CSC308 `decoratedChart`, using deprecated `java.util.Observable` and `Observer`, a rolling 20-value window, and four decorated charts. Entry point: `edu.plotter.classic.World`.
+- **Modern** — the existing `edu-plotter` implementation using `PropertyChangeSupport`, a Singleton repository, and three decorated plots. Entry point: `edu.plotter.modern.Main`.
+
+Compile with `mvn compile`, then run either entry point from your IDE. The classic Observer API is intentionally preserved for historical comparison. Compare observer registration, state management, and decorator composition between versions.
+
+## Modern implementation details
+
 
 A small Java Swing application that demonstrates how **Decorator**, **Observer**, and **Singleton** can collaborate to visualize a changing collection of values.
 
