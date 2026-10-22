@@ -3,6 +3,11 @@ package edu.plotter;
 import java.awt.*;
 import java.util.LinkedList;
 
+/**
+ * Draws the underlying line plot and a horizontal average indicator.
+ *
+ * <p>This is the concrete Component in the Decorator example.</p>
+ */
 public class Plot implements Component {
 
     public final int MAX_NUMBER_OF_VALUES = 20;
@@ -12,8 +17,8 @@ public class Plot implements Component {
         Graphics2D graphics2D = (Graphics2D)g;
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setColor(Color.BLUE);
-        for(int index = 0; index < Repository.getInstance().getSize(); index++){
-            if(index == 0){
+        for (int index = 0; index < Repository.getInstance().getSize(); index++){
+            if (index == 0){
                 g.fillRect(501/MAX_NUMBER_OF_VALUES*index+6, Repository.getInstance().getValue(index), 1, 1);
             }else{
                 g.drawLine(501/MAX_NUMBER_OF_VALUES*(index-1)+6, Repository.getInstance().getValue(index-1),

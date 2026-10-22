@@ -5,11 +5,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main extends JFrame implements ActionListener{
+/**
+ * Launches the Swing plotter and assembles three views of shared data.
+ *
+ * <p>The three panels demonstrate different Decorator chains. Clicking Run asks the shared Repository to generate a value; registered panels repaint through the Observer mechanism.</p>
+ */
+public class Main extends JFrame implements ActionListener {
 
-    private PlotPanel [] panels = new PlotPanel[3];
+    private PlotPanel[] panels = new PlotPanel[3];
 
-    public Main(){
+    /** Creates the window, three decorated plots, and their observers. */
+    public Main() {
         super("Decorated Chart");
 
         Plot plot = new Plot();
@@ -35,23 +41,25 @@ public class Main extends JFrame implements ActionListener{
 
         setLayout(new GridLayout(4,1));
 
-        for(int i = 0; i < panels.length; i++){
+        for (int i = 0; i < panels.length; i++){
             add(panels[i]);
         }
 
         add(button);
 
-        for(int i = 0; i < panels.length; i++){
+        for (int i = 0; i < panels.length; i++){
             Repository.getInstance().addPropertyChangeListener(panels[i]);
         }
 
     }
 
+    /** Generates one new value when the Run button is clicked. */
     @Override
     public void actionPerformed(ActionEvent e) {
         Repository.getInstance().create();
     }
 
+    /** Starts the Swing application on the event-dispatch thread. */
     public static void main(String[] args){
         SwingUtilities.invokeLater(() -> {
             Main main = new Main();
