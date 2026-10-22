@@ -1,3 +1,5 @@
+package edu.plotter;
+
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 

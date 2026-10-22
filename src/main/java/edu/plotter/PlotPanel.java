@@ -1,3 +1,5 @@
+package edu.plotter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;

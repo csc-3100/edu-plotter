@@ -1,3 +1,5 @@
+package edu.plotter;
+
 import java.awt.*;
 
 public class SquareBlue extends Decorator {

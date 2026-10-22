@@ -1,3 +1,5 @@
+package edu.plotter;
+
 import java.awt.*;
 import java.util.LinkedList;
 public interface Component {

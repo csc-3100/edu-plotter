@@ -1,3 +1,5 @@
+package edu.plotter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,10 +53,12 @@ public class Main extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args){
-        Main main = new Main();
-        main.setSize(501, 800);
-        main.setVisible(true);
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SwingUtilities.invokeLater(() -> {
+            Main main = new Main();
+            main.setSize(501, 800);
+            main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            main.setVisible(true);
+        });
     }
 
 }
