@@ -9,7 +9,7 @@
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <build>
+  <dependencies>\n    <dependency>\n      <groupId>org.junit.jupiter</groupId>\n      <artifactId>junit-jupiter</artifactId>\n      <version>5.11.4</version>\n      <scope>test</scope>\n    </dependency>\n  </dependencies>\n  <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -22,6 +22,6 @@
         <version>3.5.0</version>
         <configuration><mainClass>edu.plotter.Main</mainClass></configuration>
       </plugin>
-    </plugins>
+      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-surefire-plugin</artifactId>\n        <version>3.2.5</version>\n      </plugin>\n    </plugins>
   </build>
 </project>

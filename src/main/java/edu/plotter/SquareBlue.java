@@ -1,18 +1,16 @@
 package edu.plotter;
-
 import java.awt.*;
-
-public class SquareBlue extends Decorator {
-    private static final int POINT_HEIGHT = 10;
-    private static final int POINT_WIDTH = 10;
-    public final int MAX_NUMBER_OF_VALUES = 20;
-
-    public void draw(Graphics g){
-        g.setColor(Color.BLUE);
-        for(int index = 0; index < Repository.getInstance().getValues().size(); index++){
-            g.fillRect((501/MAX_NUMBER_OF_VALUES * index) - (POINT_WIDTH/2)+6,
-              Repository.getInstance().getValue(index) - (POINT_HEIGHT/2), POINT_WIDTH, POINT_HEIGHT);
-        }
-        super.draw(g);
+/** Draws blue point markers over the wrapped plot. */
+public final class SquareBlue extends Decorator {
+    public SquareBlue(Component component) { super(component); }
+    @Override public void draw(Graphics graphics) {
+        Rectangle bounds = graphics.getClipBounds();
+        int width = bounds == null ? 501 : bounds.width;
+        int height = bounds == null ? 190 : bounds.height;
+        graphics.setColor(Color.BLUE);
+        Repository model = Repository.getInstance();
+        for (int i = 0; i < model.getSize(); i++)
+            graphics.fillRect(Plot.xFor(i, width) - 5, Plot.yFor(model.getValue(i), height) - 5, 10, 10);
+        super.draw(graphics);
     }
 }
