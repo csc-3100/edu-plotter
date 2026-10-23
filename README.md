@@ -1,11 +1,12 @@
-# Plotter — Classic and Modern
+# Plotter — Classic, Modern, and Legacy
 
-Two independent Java Swing applications illustrate the Decorator and Observer patterns:
+Three Java Swing applications illustrate the Decorator and Observer patterns:
 
 - **Classic** — original CSC308 `decoratedChart`, using deprecated `java.util.Observable` and `Observer`, a rolling 20-value window, and four decorated charts. Entry point: `edu.plotter.classic.World`.
+- **Legacy** — original CSC308 `gradePlotterApp`, preserved for UML reverse engineering and refactoring. Entry point: `edu.plotter.legacy.Main`.
 - **Modern** — the existing `edu-plotter` implementation using `PropertyChangeSupport`, a Singleton repository, and three decorated plots. Entry point: `edu.plotter.modern.Main`.
 
-Compile with `mvn compile`, then run either entry point from your IDE. The classic Observer API is intentionally preserved for historical comparison. Compare observer registration, state management, and decorator composition between versions.
+Compile with `mvn compile`, then run the desired entry point from your IDE. The classic Observer API is intentionally preserved for historical comparison. Compare observer registration, state management, and decorator composition between versions.
 
 ## Modern implementation details
 
