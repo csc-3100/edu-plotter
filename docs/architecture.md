@@ -56,3 +56,8 @@ sequenceDiagram
 ```
 
 The three panels register independently with the same repository. The drawing chains differ: `BarGray → SquareBlue → Plot`, `SquareBlue → Plot`, and `Plot`.
+
+
+## Version locations
+
+The existing diagrams describe the **modern** implementation, now in package `edu.plotter.modern`. The classic application starts at `edu.plotter.classic.World`, where `Source` notifies `PlotPanel` observers using Java's deprecated Observer API and `WorkerTool` decorators compose rendering.
